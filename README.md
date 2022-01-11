@@ -33,7 +33,7 @@ The Pixset dataset can be downloaded from \url{dataset.leddartech.com}. Next, un
 
 Then, run 
 ```
-python3 prepare_inserts_data.py --cfg=configs/pixell_to_box3d.py
+python3 prepare_inserts_data.py --cfg=configs/pixell_to_box3d.yml
 ```
 This will generate the data necessary for data augmentattion.
 
@@ -41,13 +41,13 @@ This will generate the data necessary for data augmentattion.
 
 Run 
 ```
-python3 train.py --cfg=configs/pixell_to_box3d.py
+python3 train.py --cfg=configs/pixell_to_box3d.yml
 ```
 If at some point, you encounter errors mentionning "BadZipFile", you will probably have to unzip the raw data in each sequences. If this happens, please create an issue.
 
 If something goes wrong during the training, you can resume it from any state with
 ```
-python3 train.py --cfg=configs/pixell_to_box3d_v2.py --resume_state=results/*/states/pixell_ech_to_box3d_*.pt
+python3 train.py --cfg=configs/pixell_to_box3d_v2.yml --resume_state=results/*/states/pixell_ech_to_box3d_*.pt
 ```
 Where the * will vary.
 
@@ -55,18 +55,18 @@ Where the * will vary.
 
 Run 
 ```
-python3 test.py --cfg=configs/pixell_to_box3d.py --state=results/***/states/pixell_ech_to_box3d_***.pt
+python3 test.py --cfg=configs/pixell_to_box3d.yml --state=results/***/states/pixell_ech_to_box3d_***.pt
 ```
 Where the * will vary. The last * corresponds to the epoch number. 
 
 If pioneer.das.view is installed, you can also try to visualize the results with
 ```
-python3 inference.py --cfg=configs/pixell_to_box3d_v2.py --state=results/***/states/pixell_ech_to_box3d_***.pt --dataset=*
+python3 inference.py --cfg=configs/pixell_to_box3d_v2.yml --state=results/***/states/pixell_ech_to_box3d_***.pt --dataset=*
 ```
 Indicate the path to the dataset to visualize with the last argument.
 
 Finally, you can perform offline inference with 
 ```
-python3 offline_inference.py --cfg=configs/pixell_to_box3d_v2.py --state=results/***/states/pixell_ech_to_box3d_***.pt --dataset=*
+python3 offline_inference.py --cfg=configs/pixell_to_box3d_v2.yml --state=results/***/states/pixell_ech_to_box3d_***.pt --dataset=*
 ```
 This will generate a directory in the specified dataset containing the predictions.
